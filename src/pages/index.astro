@@ -1,7 +1,31 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+
+const posts = import.meta.glob("../pages/posts/*.{md,mdx}");
+
+const resolvedPosts = await Promise.all(
+  Object.values(posts).map((post) => post())
+);
 ---
 
 <MainLayout title="Inicio">
-  <h1 class="text-5xl text-white font-bold">Astro</h1>
+  <!-- component -->
+  <section class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+      <h1
+        class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white"
+      >
+        From the blog
+      </h1>
+
+      <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+        {
+          resolvedPosts.map((post:any) => (
+            <BlogPost frontmatter={post.frontmatter} url={post.url}/>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </MainLayout>

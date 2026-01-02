@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css"
 import "../styles/blog.css"
+import { ClientRouter } from "astro:transitions";
 
 // interface Props {
 //     title: string;
@@ -20,6 +21,7 @@ const frontmatter = rest.frontmatter
     <title>{frontmatter.title}</title>
   </head>
   <body class="bg-gray-900">
+    <ClientRouter/>
     <style></style>
     <a href="/">Regresar</a>
     <main>

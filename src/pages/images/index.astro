@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import MainLayout from "src/layouts/MainLayout.astro";
 import post05Imag from "@images/post-05.png";
+import { Picture } from "astro:assets";
 ---
 
 <MainLayout title="Imagenes">
@@ -17,6 +18,14 @@ import post05Imag from "@images/post-05.png";
 
   <Image src={post05Imag} alt="imagen del post 05" width="250" height="250" />
 
+  <Picture
+    src={post05Imag}
+    widths={[240, 540, 720, post05Imag.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post05Imag.width}px`}
+    width="250"
+    height="250"
+    alt="imagen del post 05"
+  />
   <div
     style={{
       height: "3000px",

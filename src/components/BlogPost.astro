@@ -1,18 +1,21 @@
 ---
 import { Formatter } from '@utils/formatter';
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
     post: CollectionEntry<"blog">
 }
 const {post} = Astro.props;
-
+const frontmatter= post.data
 ---
 
 <div class="lg:flex">
-  <img
+  <Image
     class="object-cover w-full h-56 rounded-lg lg:w-64"
-    src={post.data.image}
+    src={frontmatter.image}
+    width={500}
+    height={500}
     alt=""
   />
 
@@ -21,11 +24,11 @@ const {post} = Astro.props;
       href={`/posts/${post.slug}`}
       class="text-xl font-semibold text-gray-800 hover:underline dark:text-white"
     >
-      {post.data.title}
+      {frontmatter.title}
     </a>
 
     <span class="text-sm text-gray-500 dark:text-gray-300"
-      >{Formatter.formatDate(post.data.date)}</span
+      >{Formatter.formatDate(frontmatter.date)}</span
     >
   </div>
 </div>

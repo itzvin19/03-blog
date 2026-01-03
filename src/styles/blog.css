@@ -2,6 +2,7 @@ html {
   background-color: rgb(17 24 39);
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+  scroll-behavior: smooth;
 }
 
 body {
